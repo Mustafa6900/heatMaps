@@ -7,7 +7,7 @@ const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isPasswordVisible, setIsPasswordVisible] = useState(false); // Parolanın görünürlüğünü yönet
-  const { signIn } = useAuth();
+  const { signIn,user } = useAuth();
 
   const handleLogin = async () => {
     signIn(email, password);

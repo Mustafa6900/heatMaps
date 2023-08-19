@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import { useAuth } from './AuthContext';
 import { Ionicons } from '@expo/vector-icons';
+import BackButton from '../../components/BackButton';
 
 const RegisterScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -29,6 +30,7 @@ const RegisterScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      <BackButton/>
       <Text style={styles.title}>Register</Text>
       <TextInput
         style={styles.input}

@@ -1,19 +1,19 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { useAuth } from '../Auth/AuthContext'; 
 
 const ProfileScreen = ({ navigation }) => {
+  const { signOutUser } = useAuth(); 
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Profile</Text>
    
-        <View>
-          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}>
-            <Text style={styles.buttonText}>Logout</Text>
-          </TouchableOpacity>
-          
-          </View>
-  
+      <View>
+        <TouchableOpacity style={styles.button} onPress={signOutUser}>
+          <Text style={styles.buttonText}>Logout</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
