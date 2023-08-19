@@ -2,25 +2,29 @@ import React, { useEffect, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import * as Location from 'expo-location';
 import Header from '../../components/Header';
+import { collection, addDoc } from 'firebase/firestore';
+import { db } from '../../firebaseConfig';
+import { useAuth } from '../Auth/AuthContext';
 
 
 const HeatMap = ({ navigation }) => {
   const [location, setLocation] = useState(null);
+  const { user } = useAuth();
 
-  // konumu 10 saniyede bir güncelle
   useEffect(() => {
     const interval = setInterval(() => {
-      console.log(location);
-    }, 5000); // 10 saniye
+      if (location) {
+        // Firestore'a konum güncellemesini kaydet
+        updateLocation(location.coords.latitude, location.coords.longitude, user.email);
+      }
+    }, 10000); // 10 saniye
     return () => clearInterval(interval);
   }, [location]);
 
-  // Konum izni isteme fonksiyonu
   const requestLocationPermission = async () => {
     try {
       const { status } = await Location.requestForegroundPermissionsAsync();
       if (status === 'granted') {
-        console.log('Konum izni verildi');
         try {
           const location = await Location.getCurrentPositionAsync({
             accuracy: Location.Accuracy.High,
@@ -37,10 +41,21 @@ const HeatMap = ({ navigation }) => {
     }
   };
 
-  // Konum izni isteme fonksiyonunu çağırın
   useEffect(() => {
     requestLocationPermission();
   }, []);
+
+  const updateLocation = async (latitude, longitude,userEmail) => {
+    try {
+      await addDoc(collection(db, 'locations'), {
+        userEmail,
+        latitude,
+        longitude,
+      });
+    } catch (error) {
+      console.error('Error adding document: ', error);
+    }
+  };
 
   return (
     <View style={styles.container}>
