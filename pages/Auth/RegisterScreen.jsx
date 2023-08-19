@@ -3,6 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'reac
 import { useAuth } from './AuthContext';
 import { Ionicons } from '@expo/vector-icons';
 import BackButton from '../../components/BackButton';
+import Header from '../../components/Header';
 
 const RegisterScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -30,8 +31,10 @@ const RegisterScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      <Header title="Kayıt" />
       <BackButton/>
-      <Text style={styles.title}>Register</Text>
+      <View style={styles.inputContainer}>
+      <Text style={styles.title}>Üyelik İşlemleri</Text>
       <TextInput
         style={styles.input}
         placeholder="Email"
@@ -41,7 +44,7 @@ const RegisterScreen = ({ navigation }) => {
       <View style={styles.passwordInput}>
         <TextInput
           style={styles.passwordTextInput}
-          placeholder="Password"
+          placeholder="Şifre"
           secureTextEntry={!showPassword} // Parola gizli mi?
           value={password}
           onChangeText={setPassword}
@@ -50,12 +53,13 @@ const RegisterScreen = ({ navigation }) => {
           style={styles.passwordToggle}
           onPress={() => setShowPassword(!showPassword)} // Görünürlük durumunu tersine çevir
         >
-          <Ionicons name={!showPassword ? 'eye-off' : 'eye'} size={24} color="black" />
+          <Ionicons name={!showPassword ? 'eye-off' : 'eye'} size={18} color="black" />
         </TouchableOpacity>
       </View>
       <TouchableOpacity style={styles.button} onPress={handleSignUp}>
-        <Text style={styles.buttonText}>Register</Text>
+        <Text style={styles.buttonText}>Kayıt Ol</Text>
       </TouchableOpacity>
+    </View>
     </View>
   );
 };
@@ -63,8 +67,11 @@ const RegisterScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+  },
+  inputContainer: {
     alignItems: 'center',
+    marginTop: 'auto',
+    marginBottom: 'auto',
   },
   title: {
     fontSize: 24,

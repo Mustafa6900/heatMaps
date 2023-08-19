@@ -11,7 +11,6 @@ const Stack = createStackNavigator();
 
 const AuthStack = () => {
   const { user } = useAuth();
-  console.log(user);
 
   return (
     <Stack.Navigator  screenOptions={{headerShown: false,navigationBarHidden: true}}>

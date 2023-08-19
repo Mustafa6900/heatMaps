@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons'; 
 import { useAuth } from './AuthContext'; 
+import Header from '../../components/Header';
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isPasswordVisible, setIsPasswordVisible] = useState(false); // Parolanın görünürlüğünü yönet
-  const { signIn,user } = useAuth();
+  const { signIn } = useAuth();
 
   const handleLogin = async () => {
     signIn(email, password);
@@ -19,7 +20,9 @@ const LoginScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
+      <Header title="Giriş" />
+      <View style={styles.inputContainer}>
+      <Text style={styles.title}>Hoş Geldiniz</Text>
       <TextInput
         style={styles.input}
         placeholder="Email"
@@ -29,7 +32,7 @@ const LoginScreen = ({ navigation }) => {
       <View style={styles.passwordInputContainer}>
         <TextInput
           style={styles.passwordInput}
-          placeholder="Password"
+          placeholder="Şifre"
           secureTextEntry={!isPasswordVisible} // Parola gizli mi?
           value={password}
           onChangeText={setPassword}
@@ -43,11 +46,12 @@ const LoginScreen = ({ navigation }) => {
         </TouchableOpacity>
       </View>
       <TouchableOpacity style={styles.buttonLogin} onPress={handleLogin}>
-        <Text style={styles.buttonTextLogin}>Login</Text>
+        <Text style={styles.buttonTextLogin}>Giriş</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('Register')}>
-        <Text style={styles.buttonTextRegister}>Register</Text>
+        <Text style={styles.buttonTextRegister}>Kayıt Ol</Text>
       </TouchableOpacity>
+    </View>
     </View>
   );
 };
@@ -55,8 +59,12 @@ const LoginScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+  },
+  inputContainer: {
+  
     alignItems: 'center',
+    marginTop: 'auto',
+    marginBottom: 'auto',
   },
   title: {
     fontSize: 24,

@@ -2,7 +2,7 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import ProfileScreen from './Home/ProfileScreen';
 import HeatmapScreen from './Home/HeatMapScreen';
-import { Ionicons } from '@expo/vector-icons'; // Expo Icons kullanmak için
+import { Ionicons } from '@expo/vector-icons'; 
 
 const Tab = createBottomTabNavigator();
 
@@ -10,7 +10,7 @@ const Tabbar = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
+        tabBarIcon: ({ focused }) => {
           let iconName;
 
           if (route.name === 'Profile') {
@@ -19,14 +19,10 @@ const Tabbar = () => {
             iconName = focused ? 'map' : 'map-outline';
           }
 
-          return <Ionicons name={iconName} size={size} color={color} />;
+          return <Ionicons name={iconName} size={30} color={"black"} />;
         },
         headerShown: false,
         tabBarShowLabel: false,
-        activeTintColor: 'black',
-        inactiveTintColor: 'gray',
-        
-  
       })} 
     >
       <Tab.Screen name="Profile" component={ProfileScreen} />

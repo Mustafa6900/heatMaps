@@ -19,22 +19,28 @@ export const AuthProvider = ({ children }) => {
     };
   }, []);
 
-
   const signIn = async (email, password) => {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      setUser(userCredential.user);
+      const { email: userEmail } = userCredential.user;
+  
+      setUser({
+        email: userEmail,
+        password: password,
+      });
+  
       Alert.alert("Giriş Başarılı", "Hoşgeldiniz");
       navigation.navigate("Tabbar");
     } catch (error) {
       Alert.alert("Giriş Başarısız", "Lütfen bilgilerinizi kontrol ediniz");
     }
   };
+  
 
   const signUp = async (email, password) => {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      setUser(userCredential.user);
+      setUser(userCredential.user,password);
       Alert.alert("Kayıt Başarılı", "Hoşgeldiniz");
       navigation.navigate("Tabbar");
     } catch (error) {
@@ -46,6 +52,7 @@ const signOutUser = async () => {
   try {
     await signOut(auth);
     setUser(null);
+    setUserInformation(null);
     Alert.alert("Çıkış Başarılı", "Tekrar görüşmek üzere");
     navigation.navigate("Login"); 
   } catch (error) {
@@ -54,7 +61,7 @@ const signOutUser = async () => {
 };
 
   return (
-    <AuthContext.Provider value={{ user, signIn, signUp, signOutUser }}>
+    <AuthContext.Provider value={{ user,signIn, signUp, signOutUser }}>
       {children}
     </AuthContext.Provider>
   );
