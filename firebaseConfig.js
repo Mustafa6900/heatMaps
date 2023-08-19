@@ -1,5 +1,7 @@
-import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { initializeApp } from 'firebase/app';
+import { getDatabase } from 'firebase/database';
+import { getAuth } from 'firebase/auth';
+
 const firebaseConfig = {
   apiKey: "AIzaSyBt47rd0Jx7grm8zKOv9h8BO4-ZnGHIbEQ",
   authDomain: "heatmap-5d18d.firebaseapp.com",
@@ -9,8 +11,9 @@ const firebaseConfig = {
   appId: "1:220485130929:web:dabe0cad944371657ba090"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
-export {auth}
+const database = getDatabase(app);
+
+export { auth, database };
 export default app;
