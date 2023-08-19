@@ -2,9 +2,11 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import { Alert } from 'react-native';
 import { getAuth, signInWithEmailAndPassword,createUserWithEmailAndPassword,signOut } from 'firebase/auth';
 import { useNavigation } from '@react-navigation/native';
+
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+
   const [user, setUser] = useState(null);
   const auth = getAuth();
   const navigation = useNavigation();
@@ -57,6 +59,7 @@ const signOutUser = async () => {
     navigation.navigate("Login"); 
   } catch (error) {
     Alert.alert("Çıkış Hatası", "Bir hata oluştu. Lütfen tekrar deneyiniz.");
+    console.error(error);
   }
 };
 

@@ -8,7 +8,6 @@ import Header from '../../components/Header';
 const ProfileScreen = ({ navigation }) => {
   const { signOutUser, user } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
-  console.log(user);
 
   useFocusEffect(
     React.useCallback(() => {
