@@ -34,7 +34,6 @@ const HeatMap = ({ navigation }) => {
   const { user } = useAuth();
   const [userLocations, setUserLocations] = useState([]);
 
-  
   const requestLocationPermission = async () => {
     try {
       const granted = await PermissionsAndroid.request(
@@ -47,8 +46,11 @@ const HeatMap = ({ navigation }) => {
         }
       );
       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-        console.log('Konum izni verildi');
-        // Konum izni verildiyse, konum bilgilerini alabilirsiniz.
+        
+        // Konum izni verildiyse konum bilgisini al
+        const location = await Location.getCurrentPositionAsync({});
+        setLocation(location); 
+
       } else {
         console.log('Konum izni verilmedi');
       }
@@ -56,6 +58,10 @@ const HeatMap = ({ navigation }) => {
       console.warn(err);
     }
   };
+
+  useEffect(() => {
+    requestLocationPermission();
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -66,13 +72,6 @@ const HeatMap = ({ navigation }) => {
     }, 10000); 
     return () => clearInterval(interval);
   }, [location]);
-
-    
-  useEffect(() => {
-    requestLocationPermission();
-  }, []);
-
-
 
   const updateLocation = async (latitude, longitude, userEmail) => {
     try {
@@ -85,8 +84,6 @@ const HeatMap = ({ navigation }) => {
       console.error('Error adding document: ', error);
     }
   };
-
-
 
   useEffect(() => {
     const userLocationsRef = collection(db, 'locations');
@@ -110,7 +107,6 @@ const HeatMap = ({ navigation }) => {
     return () => unsubscribe();
   }, []);
 
-  
   const customMapStyle = [
     {
         elementType: 'geometry',
@@ -271,7 +267,7 @@ const HeatMap = ({ navigation }) => {
             },
         ],
     },
-];
+  ];
 
 
 return (
