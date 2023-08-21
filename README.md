@@ -14,8 +14,8 @@ Kullanıcıların konum bilgileri her 10 saniyede bir alınarak, kullanıcı yo�
 - [Ekran Görüntüleri](#ekran-görüntüleri)
 
 ## Kurulum
-1. Bu depoyu klonlayın: `git clone https://github.com/kullanıcı-adınız/proje-adı.git`
-2. Proje dizinine gidin: `cd proje-adı`
+1. Bu depoyu klonlayın: `git clone https://github.com/Mustafa6900/heatMaps.git`
+2. Proje dizinine gidin: `cd heatMaps`
 3. Gerekli bağımlılıkları yükleyin: `npm install` veya `yarn install`
 
 ## Kullanım
@@ -39,10 +39,4 @@ Kullanıcıların konum bilgileri her 10 saniyede bir alınarak, kullanıcı yo�
 
 https://github.com/Mustafa6900/heatMaps/assets/58307398/4cb342ae-b709-4870-ab0a-5ea737b378b0
 
-![1](https://github.com/Mustafa6900/heatMaps/assets/58307398/5f4322db-a878-405f-839e-99ddc15a8547)
-
-![2](https://github.com/Mustafa6900/heatMaps/assets/58307398/98bfc1ce-797d-46b8-9e1c-a17c6e22e7f9)
-
-![3](https://github.com/Mustafa6900/heatMaps/assets/58307398/39e94ccb-1b4a-442e-b63c-1e59b1d12471)
-
-![4](https://github.com/Mustafa6900/heatMaps/assets/58307398/5f811e7d-a1d7-4d44-ad4b-97f74f57cd62)
+![zyro-image (3)](https://github.com/Mustafa6900/heatMaps/assets/58307398/160341e2-a1e5-4cc6-a24a-02fa5b51bf33)
