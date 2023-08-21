@@ -40,5 +40,8 @@ Kullanıcıların konum bilgileri her 10 saniyede bir alınarak, kullanıcı yo�
 https://github.com/Mustafa6900/heatMaps/assets/58307398/4cb342ae-b709-4870-ab0a-5ea737b378b0
 
 
-![zyro-image (4)](https://github.com/Mustafa6900/heatMaps/assets/58307398/c6fd9222-fc66-4dd5-83b2-45327131edfd) ![zyro-image (5)](https://github.com/Mustafa6900/heatMaps/assets/58307398/0a66c453-477d-44df-a085-71af481e036b)
+![zyro-image (5)](https://github.com/Mustafa6900/heatMaps/assets/58307398/0a66c453-477d-44df-a085-71af481e036b)    ![zyro-image (6)](https://github.com/Mustafa6900/heatMaps/assets/58307398/43cbcd82-87f9-46b6-9040-7211062a31dc)
+
+
+![zyro-image (3)](https://github.com/Mustafa6900/heatMaps/assets/58307398/5023523f-c1f9-4d59-b691-33a9403ad74c)     ![zyro-image (8)](https://github.com/Mustafa6900/heatMaps/assets/58307398/d16ed055-1029-437d-bf2c-9de4c2618f6a)
 
