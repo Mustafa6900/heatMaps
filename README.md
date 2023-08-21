@@ -34,6 +34,22 @@ Kullanıcıların konum bilgileri her 10 saniyede bir alınarak firebase'de tutu
 - Firebase Firestore
 - Expo
 
+## Kullanılan Kütüphaneler
+- @expo/vector-icons": "^13.0.0",
+- @react-native-firebase/app": "^18.3.0",
+- @react-navigation/bottom-tabs": "^6.5.8",
+- @react-navigation/native": "^6.1.7",
+- @react-navigation/stack": "^6.3.17",
+- expo": "~49.0.7",
+- expo-location": "~16.1.0",
+- expo-splash-screen": "~0.20.5",
+- expo-status-bar": "~1.6.0",
+- firebase": "^10.2.0",
+- react": "18.2.0",
+- react-native": "0.72.3",
+- react-native-maps": "^1.7.1",
+- react-native-permissions": "^3.8.4",
+- expo-task-manager": "~11.3.0"
 
 ## Ekran Görüntüleri
 
