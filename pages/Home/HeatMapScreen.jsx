@@ -7,6 +7,8 @@ import { collection, addDoc, onSnapshot } from 'firebase/firestore';
 import { db } from '../../firebaseConfig';
 import { useAuth } from '../Auth/AuthContext';
 import MapView, { Marker, Callout } from 'react-native-maps';
+import { PermissionsAndroid } from 'react-native';
+
 
 const LOCATION_BACK_HEATMAP = 'background-location-task';
 
@@ -27,11 +29,33 @@ TaskManager.defineTask(LOCATION_BACK_HEATMAP, async ({ data, error }) => {
 });
 
 
-
 const HeatMap = ({ navigation }) => {
   const [location, setLocation] = useState(null);
   const { user } = useAuth();
   const [userLocations, setUserLocations] = useState([]);
+
+  
+  const requestLocationPermission = async () => {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+        {
+          title: 'Konum İzni',
+          message: 'Uygulama konumunuzu kullanmak istiyor.',
+          buttonPositive: 'Tamam',
+          buttonNegative: 'İptal',
+        }
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        console.log('Konum izni verildi');
+        // Konum izni verildiyse, konum bilgilerini alabilirsiniz.
+      } else {
+        console.log('Konum izni verilmedi');
+      }
+    } catch (err) {
+      console.warn(err);
+    }
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -43,25 +67,12 @@ const HeatMap = ({ navigation }) => {
     return () => clearInterval(interval);
   }, [location]);
 
-  const requestLocationPermission = async () => {
-    try {
-      const { status } = await Location.requestForegroundPermissionsAsync();
-      if (status === 'granted') {
-        try {
-          const location = await Location.getCurrentPositionAsync({
-            accuracy: Location.Accuracy.High,
-          });
-          setLocation(location);
-        } catch (error) {
-          console.error(error);
-        }
-      } else {
-        console.error('Konum izni verilmedi');
-      }
-    } catch (err) {
-      console.warn(err);
-    }
-  };
+    
+  useEffect(() => {
+    requestLocationPermission();
+  }, []);
+
+
 
   const updateLocation = async (latitude, longitude, userEmail) => {
     try {
@@ -76,9 +87,6 @@ const HeatMap = ({ navigation }) => {
   };
 
 
-  useEffect(() => {
-    requestLocationPermission();
-  }, []);
 
   useEffect(() => {
     const userLocationsRef = collection(db, 'locations');
