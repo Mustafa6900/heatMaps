@@ -4,7 +4,7 @@
 HeatMap projesi, kullanıcıların uygulamaya kaydolabileceği veya giriş yapabileceği, kullanıcıların yoğun olarak bulunduğu lokasyonları gösteren bir mobil uygulamadır. 
 Redux kullanarak kullanıcının oturumunun yönetilmesi sağlanır, böylece kullanıcı verileri uygulama genelinde kullanılabilir hale gelir. 
 Profil bölümünde kullanıcının kişisel bilgileri görüntülenebilir. Isı haritası bölümünde ise kullanıcının konumuna bağlı olarak bir ısı haritası oluşturulur. 
-Kullanıcıların konum bilgileri her 10 saniyede bir alınarak, kullanıcı yoğunluğunun en yüksek olduğu alanlar tespit edilir. Uygulama aynı zamanda arkaplanda'da lokasyan bilgilerini almaktadır.
+Kullanıcıların konum bilgileri her 10 saniyede bir alınarak firebase'de tutulur, kullanıcı yoğunluğunun en yüksek olduğu alanlar tespit edilir. Uygulama aynı zamanda arkaplanda'da lokasyan bilgilerini almaktadır.
 
 ## İçindekiler
 - [Kurulum](#kurulum)
@@ -45,4 +45,7 @@ https://github.com/Mustafa6900/heatMaps/assets/58307398/4cb342ae-b709-4870-ab0a-
 
 
 ![zyro-image (7)](https://github.com/Mustafa6900/heatMaps/assets/58307398/cfd2464d-d5cb-4116-a688-c47ac2c0c7a9)      ![zyro-image (8)](https://github.com/Mustafa6900/heatMaps/assets/58307398/d16ed055-1029-437d-bf2c-9de4c2618f6a)
+
+
+![image](https://github.com/Mustafa6900/heatMaps/assets/58307398/230b1c80-d0bf-4279-bd2f-4f36a0f9e245)
 
