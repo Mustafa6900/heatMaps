@@ -54,7 +54,6 @@ const signOutUser = async () => {
   try {
     await signOut(auth);
     setUser(null);
-    setUserInformation(null);
     Alert.alert("Çıkış Başarılı", "Tekrar görüşmek üzere");
     navigation.navigate("Login"); 
   } catch (error) {

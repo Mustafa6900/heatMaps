@@ -1,11 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import { View, StyleSheet,Text } from 'react-native';
 import * as Location from 'expo-location';
+import * as TaskManager from 'expo-task-manager';
 import Header from '../../components/Header';
 import { collection, addDoc, onSnapshot } from 'firebase/firestore'; 
 import { db } from '../../firebaseConfig';
 import { useAuth } from '../Auth/AuthContext';
 import MapView, { Marker, Callout } from 'react-native-maps';
+
+const LOCATION_BACK_HEATMAP = 'background-location-task';
+
+TaskManager.defineTask(LOCATION_BACK_HEATMAP, async ({ data, error }) => {
+  if (error) {
+    console.error('Error occurred:', error);
+    return;
+  }
+  if (data) {
+    const { locations } = data;
+    console.log('Locations captured in background:', locations);
+
+    // Background konumları Firestore' kaydet
+    const location = locations[0];
+    const userEmail = 'unknown'; 
+    updateLocation(location.coords.latitude, location.coords.longitude, userEmail);
+  }
+});
+
+
 
 const HeatMap = ({ navigation }) => {
   const [location, setLocation] = useState(null);
@@ -18,7 +39,7 @@ const HeatMap = ({ navigation }) => {
         // Firestore'a konum güncellemesini kaydet
         updateLocation(location.coords.latitude, location.coords.longitude, user.email);
       }
-    }, 20000); // 10 saniye
+    }, 10000); 
     return () => clearInterval(interval);
   }, [location]);
 
@@ -63,7 +84,7 @@ const HeatMap = ({ navigation }) => {
     const userLocationsRef = collection(db, 'locations');
     const unsubscribe = onSnapshot(userLocationsRef, (querySnapshot) => {
       const newLocations = [];
-
+      
       querySnapshot.docChanges().forEach((change) => {
         if (change.type === 'added') {
           const locationData = change.doc.data();
@@ -244,19 +265,10 @@ const HeatMap = ({ navigation }) => {
     },
 ];
 
-const getColorForUserEmail = (email) => {
-  const hash = email.split('').reduce((acc, char) => {
-    acc = (acc << 5) - acc + char.charCodeAt(0);
-    return acc & acc;
-  }, 0);
-
-  const randomColor = `#${hash.toString(16).padStart(6, '0')}`;
-  return randomColor;
-};
 
 return (
     <View style={styles.container}>
-      <Header title="HeatMap" />
+      <Header title="Isı Haritası" />
       <View style={styles.mapContainer}>
       <MapView style={styles.map}
         customMapStyle={customMapStyle} 
@@ -280,10 +292,10 @@ return (
             <Marker
               key={index}
               coordinate={{ latitude: location.latitude, longitude: location.longitude }}
-              pinColor={getColorForUserEmail(location.userEmail)}
+ 
             >
               <View style={styles.annotationContainer}>
-                <View style={[styles.annotationFill, { backgroundColor: getColorForUserEmail(location.userEmail) }]} />
+                <View style={styles.annotationFill} />
               </View>
               <Callout>
                 <Text>User Location</Text>
