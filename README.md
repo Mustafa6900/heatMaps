@@ -4,7 +4,7 @@
 HeatMap projesi, kullanıcıların uygulamaya kaydolabileceği veya giriş yapabileceği, kullanıcıların yoğun olarak bulunduğu lokasyonları gösteren bir mobil uygulamadır. 
 Redux kullanarak kullanıcının oturumunun yönetilmesi sağlanır, böylece kullanıcı verileri uygulama genelinde kullanılabilir hale gelir. 
 Profil bölümünde kullanıcının kişisel bilgileri görüntülenebilir. Isı haritası bölümünde ise kullanıcının konumuna bağlı olarak bir ısı haritası oluşturulur. 
-Kullanıcıların konum bilgileri her 10 saniyede bir alınarak, kullanıcı yoğunluğunun en yüksek olduğu alanlar tespit edilir.
+Kullanıcıların konum bilgileri her 10 saniyede bir alınarak, kullanıcı yoğunluğunun en yüksek olduğu alanlar tespit edilir. Uygulama aynı zamanda arkaplanda'da lokasyan bilgilerini almaktadır.
 
 ## İçindekiler
 - [Kurulum](#kurulum)
