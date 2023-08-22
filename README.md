@@ -2,7 +2,7 @@
 
 ## Açıklama
 HeatMap projesi, kullanıcıların uygulamaya kaydolabileceği veya giriş yapabileceği, kullanıcıların yoğun olarak bulunduğu lokasyonları gösteren bir mobil uygulamadır. 
-Redux kullanarak kullanıcının oturumunun yönetilmesi sağlanır, böylece kullanıcı verileri uygulama genelinde kullanılabilir hale gelir. 
+AuthContext.Provider kullanarak kullanıcının oturumunun yönetilmesi sağlanır, böylece kullanıcı verileri uygulama genelinde kullanılabilir hale gelir. 
 Profil bölümünde kullanıcının kişisel bilgileri görüntülenebilir. Isı haritası bölümünde ise kullanıcının konumuna bağlı olarak bir ısı haritası oluşturulur. 
 Kullanıcıların konum bilgileri her 10 saniyede bir alınarak firebase'de tutulur, kullanıcı yoğunluğunun en yüksek olduğu alanlar tespit edilir. Uygulama aynı zamanda arkaplanda'da lokasyan bilgilerini almaktadır.
 
@@ -24,13 +24,12 @@ Kullanıcıların konum bilgileri her 10 saniyede bir alınarak firebase'de tutu
 
 ## Özellikler
 - Kullanıcı Kaydı ve Girişi
-- Redux ile Oturum Yönetimi
+- AuthContext ile Oturum Yönetimi
 - Kullanıcı Profili Görüntüleme
 - Konuma Bağlı Isı Haritası Oluşturma
 
 ## Kullanılan Teknolojiler
 - React Native
-- Redux
 - Firebase Firestore
 - Expo
 
